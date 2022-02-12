@@ -1,0 +1,17 @@
+*{
+  background-color: #0a0a0a;
+  color: white;
+  font-weight: bold;
+  font-family: 'Teko', sans-serif;
+  margin: 0;
+}
+.App{
+  padding:  3vh 20vw 20vh 20vw ;
+ 
+}
+.header{
+  background-color:#171717;
+  height: 30vh;
+  margin: 30px 0;
+  border-radius: 20px;
+}

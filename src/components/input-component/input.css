@@ -1,0 +1,11 @@
+.input{
+    padding: 10px;
+    margin: 10px;
+    min-width: 30vw;
+    border-radius: 7px;
+    border: none;
+    background-color:#171717;
+}
+label{
+    font-size: 1.5em;
+}

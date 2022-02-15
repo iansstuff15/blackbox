@@ -17,6 +17,8 @@ class Login extends React.Component{
         this.state = {
           email: "",
           password: "",
+          loginAttempts: 3,
+          isDisabled: false,
 
         };
       }
@@ -28,17 +30,41 @@ class Login extends React.Component{
             email:this.state.email,
             password: this.state.password,
         }
+
         axios.post('http://localhost/register/login.php', obj)
-        .then(res => {console.log(res.data)
-            let date = new Date(res.data);
-            let curdate = new Date();
-            date.setDate(date.getDate()-10);
-            if(curdate.getYear() === date.getYear() && curdate.getMonth() === date.getMonth() && curdate.getDay() === date.getDay()){
-                if(curdate.getTime()>=date.getTime()){
-                    alert("You have 10 days left");
+        .then(res => {
+            console.log(res.data);
+            console.log(this.state.loginAttempts);
+
+            if(this.state.loginAttempts > 0){
+                if(res.data !== '404'){
+
+                    let date = new Date(res.data);
+                    let curdate = new Date();
+                    date.setDate(date.getDate()-10);
+                    if(curdate.getYear() === date.getYear() && curdate.getMonth() === date.getMonth() && curdate.getDay() === date.getDay()){
+                        if(curdate.getTime()>=date.getTime()){
+                            alert("Password expires in 10 days left");
+                        }
+                    }
+                    alert("Login Success!");
+    
+                }else{
+    
+                    this.setState((prevState)=>({loginAttempts: prevState.loginAttempts-1}));
+                    alert("Login Failed. Please try again.");
+    
                 }
+            }else{
+                this.setState({isDisabled: true});
+                // Lock Login Button for 5 minutes and add 3 again to loginAttempts variable
+                setTimeout(()=> {
+                    this.setState({isDisabled: false})
+                    this.setState({loginAttempts: 3})
+                }, 5000);
+                alert("Too many failed attempts, try again after 5 minutes.");
             }
- 
+
         })
         .catch(error => {
             console.log(error.response);
@@ -76,7 +102,7 @@ render(){return(
       
    
 
-        <input type={'submit'} className='submit' value={'Login'}/>
+        <input type={'submit'} disabled={this.state.isDisabled} className='submit' value={'Login'}/>
         </form>
         </div>
         <div>

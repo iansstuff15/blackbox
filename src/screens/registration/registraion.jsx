@@ -39,12 +39,21 @@ class Registration extends React.Component{
           if (!obj['password'].toUpperCase().includes(obj['last_name'].toUpperCase())){
             if (!obj['password'].toUpperCase().includes(obj['display_name'].toUpperCase())){
               axios.post('http://localhost/register/createuser.php',obj)
-              .then(res=> console.log(res.data))
+              .then(res=> {
+                alert("Registered Successfully!");
+                console.log(res.data)
+              })
               .catch(error => {
                 console.log(error.response)
               });
+            }else{
+              alert('Password does not conform to the Password Policy!');
             }
+          }else{
+            alert('Password does not conform to the Password Policy!');
           }  
+        }else{
+          alert('Password does not conform to the Password Policy!');
         }
 
 

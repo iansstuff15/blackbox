@@ -3,6 +3,7 @@ import InputComponent from '../../components/input-component/input';
 import'./registration.css'
 import sideimage from  '../../assets/images/register-illustration.png';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 // import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 // const auth = getAuth();
@@ -112,7 +113,9 @@ render(){return(
         <div className='container-fixed'>
             
         <img src={sideimage} alt='register illustration' />
-        <h1 className='toSignInButton'>Already have an acccount? Sign in</h1>
+        <Link to ={"/login"}>
+          <h1 className='toSignInButton'>Already have an acccount? Sign in</h1>
+        </Link>
         </div>
         </div>
        

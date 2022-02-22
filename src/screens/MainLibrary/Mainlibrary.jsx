@@ -9,7 +9,7 @@ axios.get('https://api.rawg.io/api/games?key=60a3a4e6c1dc496b84eef0a2b8d33fa5',
        } 
     }
 ).then(res => {
-    //the game library appears here and assign codes using res.result
+    //the game library appears here and assign codes using res.data.result
     console.log(res)}
     ).catch(error =>
         console.log(error)

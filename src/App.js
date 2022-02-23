@@ -9,7 +9,8 @@ import {
 import Registration from './screens/registration/registraion';
 import Login from './screens/login/login';
 import ChangePass from './screens/changepassword/changepass';
-import Mainlibrary from './screens/MainLibrary/Mainlibrary';
+import Home from './screens/home/home';
+
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path = "/" element = {<Registration/>}  exact />
           <Route path = "/login" element = {<Login/>} exact />
           <Route path = "/changepassword" element = {<ChangePass/>} exact />
-          <Route path = "/Mainlibrary" element = {<Mainlibrary />} exact />
+          <Route path = "/Home" element = {<Home />} exact />
         </Routes>
       </Router>
     </div>

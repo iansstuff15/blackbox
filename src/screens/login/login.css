@@ -5,6 +5,7 @@ h2{
 h3{
     font-size: 5em;
     line-height: .5;
+    color: white;
 }
 img{
     width: 35vw;
@@ -12,13 +13,13 @@ img{
 
 }
 .grid{
-    
+    padding:  3vh 20vw 20vh 20vw ;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
-
+        color: white;
 }
 .container{
     margin: 40px 0;

@@ -1,30 +1,36 @@
-
+import logo from './logo.svg';
 import './App.css';
 import './screens/registration/registraion'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
 import Registration from './screens/registration/registraion';
+import firebase from 'firebase/compat/app'
 import Login from './screens/login/login';
 import ChangePass from './screens/changepassword/changepass';
 import Home from './screens/home/home';
-
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Header from './components/header/header';
+import GamePage from './screens/game-page/game_page';
+import GenrePage from './screens/genre-page/genre_page';
 function App() {
+ 
   return (
-    <div className="App">
-       <h1>Black Box</h1>
-      <Router>
-        <Routes>
-          <Route path = "/" element = {<Registration/>}  exact />
-          <Route path = "/login" element = {<Login/>} exact />
-          <Route path = "/changepassword" element = {<ChangePass/>} exact />
-          <Route path = "/Home" element = {<Home />} exact />
-        </Routes>
-      </Router>
+    <BrowserRouter >
+    <div className='App'>
+    <Header/>
+    <Routes >
+      <Route path="/" element={<Home/>} />
+      <Route path="login" element={<Login/>} />
+      <Route path="register" element={<Registration/>} />
+      <Route path="game" element={<GamePage/>} >
+      <Route path=":game_id" element={<GamePage />} />
+
+      </Route>
+      <Route path="genre" element={<GenrePage/>}>
+        <Route path=":game_genre" element={<GenrePage/>}/>
+      </Route>
+    </Routes>
     </div>
+   
+  </BrowserRouter>
   );
 }
 

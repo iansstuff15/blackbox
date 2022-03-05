@@ -1,0 +1,42 @@
+.game-card{
+    padding: 20px 20px;
+    line-height: 20px;
+   display: inline-block;
+   background-color:rgb(209, 206, 206);
+   margin: 40px 40px 0px 0 ;
+   border-radius: 10px;
+   overflow: hidden;
+   box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+-webkit-box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+
+}
+.thumbnail{
+    object-fit: cover;
+    height: 30vh;
+    min-width: 20px;
+    max-width: 220px;
+    border-radius: 10px;
+    
+}
+.learn-more-button{
+  background-color: #3794eb;
+    padding: 5px;
+    margin: 10px 0;
+    float: right;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+   width: 50%;
+    
+}
+.learn-more-text{
+   color: #171717,
+   
+}
+.card-title{
+    color: #3794eb;
+}
+.card-subtitle{
+    color: black;
+}

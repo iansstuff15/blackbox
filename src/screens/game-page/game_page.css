@@ -1,0 +1,143 @@
+.description{
+   
+    text-align: justify;
+    margin: 10px 0 40px 0;
+    padding: 0 40px;
+}
+.link-icon{
+    margin: 0 0 0 10px;
+}
+.game-header-image{
+    border-radius: 10px;
+    height: 50vh;
+    object-fit: cover;
+    object-position: 0 0px;
+    width: 90vw;
+    margin: 20px 0;
+   
+    box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+}
+.game-title{
+   
+    font-size: 4em;
+}
+.game-developers{
+    color: rgb(54, 157, 216);
+    font-size: 2em;
+}
+.reddit-card{
+    color: rgb(10, 10, 10);
+    background-color: rgb(255, 182, 160);
+    width: fit-content;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin: 10px 0;
+    max-width: 50vw;
+    text-align: justify;
+    box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+-webkit-box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+}
+.game-esrb_rating{
+    color: black;
+    font-size: 1.8em;
+    display: inline-block;
+    margin: 10px 20px 20px 0;
+    background-color: rgb(128, 191, 228);
+    padding: 10px;
+    border-radius: 10px;
+}
+.game-metacritic{
+    color: white;
+    font-size: 1.8em;
+    display: inline-block;
+    background-color: rgba(170, 32, 32, 0.863);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.movie-list{
+    display: flex; 
+    flex-direction: row;
+    overflow: scroll;
+ /* overflow-X: hidden; */
+    overflow-y: hidden;
+}
+.screenshot-list{
+    display: flex; 
+    flex-direction: row;
+    overflow: scroll;
+ /* overflow-X: hidden; */
+    overflow-y: hidden;
+}
+.game-screenshot{
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: all .2s ease-in-out;
+}
+.game-screenshot:hover{
+  width: 300%;
+}
+.game-movies{
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 50%;
+    transition: all .2s ease-in-out;
+}
+.game-movies:hover{
+    width: 100%;
+
+}
+.install-button{
+    background-color:    #3794eb; ;
+    font-size: 1.5em;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+.genre-list{
+    display: flex; 
+    flex-direction: row;
+    overflow: scroll;
+    overflow-y: hidden;
+}
+.reddit-button{
+background-color: #EE4124;
+padding: 10px;
+color: white;
+
+border-radius: 10px;
+cursor: pointer;
+}
+.reddit-button:hover{
+    background-color: #b3270e;
+   
+    }
+.reddit-name{
+    color: #EE4124;
+    font-size: 1.8em;
+}
+.reddit-description{
+    margin: 10px 0;
+    color:rgb(10, 10, 10);
+}
+.reddit-icon{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.game-info-card{
+    background-color:rgb(209, 206, 206);
+    box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+-webkit-box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 5px 22px -1px rgba(0,0,0,0.75);
+border-radius: 20px;
+padding: 20px 40px;
+margin: 20px 0;
+}

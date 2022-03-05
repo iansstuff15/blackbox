@@ -1,41 +1,51 @@
 *{
 
-  
+ 
   font-weight: bold;
   font-family: 'Teko', sans-serif;
   margin: 0;
 }
-.App{
- 
-  background-color: #0a0a0a;
- 
+html{
+   scroll-behavior: smooth;
+}
+a{
+  text-decoration: none;
+  color: black;
 }
 
 .website-title{
-  color: white;
+  color: black;
 
 }
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
   padding: 10px;
+  border-radius: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #0a0a0a; 
+  background: #f0f0f0; 
   padding: 10px;
+  border-radius: 10px;
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(28, 28, 28); 
+  background: rgb(191, 191, 191); 
   border-radius: 10px;
   
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #e49012; 
+  background: #3794eb; 
+  border-radius: 10px;
 
+}
+.App{
+  
+  background-color: white;
+  padding:  3vh 5vw 20vh 5vw ;
 }

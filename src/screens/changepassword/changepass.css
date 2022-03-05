@@ -1,5 +1,5 @@
 h2{
-    color: #e8b305;
+    color: #1362ac;
     font-size: 4em;
 }
 h3{
@@ -8,11 +8,11 @@ h3{
 }
 img{
     width: 35vw;
-
+    
 
 }
 .grid{
-
+    
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
@@ -52,4 +52,4 @@ img{
     background-color: #e8b305;
     cursor: pointer;
 }
-.form{padding: 20vh 0;} 
+.form{padding: 20vh 0;}

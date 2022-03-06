@@ -2,23 +2,24 @@ import React from 'react'
 import { Component } from 'react/cjs/react.production.min'
 import GameCard from '../../components/game-card/game_card'
 import GenreTile from '../../components/genre-tile/genre-tile'
-import Header from '../../components/header/header'
 import Hero from '../../components/Hero/Hero'
 import './home.css'
 import axios from 'axios';
+import {Navigate} from 'react-router-dom';
 
 class Home extends Component {
     
 
     state = {
         games: [],
-        genres:[]
+        genres:[],
+        authenticated: false,
       }
 
       
       fetchUpcoming() {
 
-                axios.get(`http://localhost:8000/games`,
+                axios.get(`https://localhost:8000/games`,
                     {
                     headers:{
                         'Content-Type': 'application/json',
@@ -30,7 +31,7 @@ class Home extends Component {
                     this.setState({games:res.data})
                 }).catch(error =>console.log(error))
 
-                axios.get(`http://localhost:8000/genre`,
+                axios.get(`https://localhost:8000/genre`,
                         {
                         headers:{
                             'Content-Type': 'application/json',
@@ -44,22 +45,28 @@ class Home extends Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount(){    
         this.fetchUpcoming();
+        // if(this.state.authenticated)
+            
+        // else{
+        //     return(<>{this.state.authenticaiton && <Navigate to="/login" replace ={true}/>}</>)
+        // }
        
     }
 
     render(){
         return(
+           
             <div className='home'>
-            <Header/>
+            {/* {this.state.authentication && <Navigate to="/login" replace ={true}/>} */}
             <Hero/>         
             
                <h2>Featured</h2>
                <h3>Games</h3>
                { this.state.games.map((game) => (
                    <span key = {game.id}>
-                <GameCard gameName={game.name} gameIMG={game.background_image} gameReleased={game.released}/>           
+                <GameCard gameName={game.name} gameIMG={game.background_image} gameReleased={game.released} gameData={game} />           
                     </span>
                
             ))}

@@ -4,10 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import Login from './screens/login/login';
-import Registration from './screens/registration/registraion';
-
-
 ReactDOM.render(
    
 <App/>

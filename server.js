@@ -123,8 +123,8 @@ app.get('/genre', (req, res) => {
     }).catch(error =>console.log(error))
 })
 
-
+const server_port = process.env.SERVER_PORT || 8000;
 
 app.listen(process.env.SERVER_PORT, () => {
-console.log(`Listening to ${process.env.SERVER_PORT}!`)
+console.log(`Listening to ${server_port}!`)
 } )

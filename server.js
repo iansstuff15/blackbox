@@ -93,7 +93,7 @@ app.get('/games/genre/:genre', (req, res) => {
     }).catch(error =>console.log(error))
 })
 
-app.get('/games', (req, res) => {
+app.get('/games', (res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     axios.get(`https://api.rawg.io/api/games?key=${process.env.MY_API_KEY}&page_size=10`,
@@ -108,7 +108,7 @@ app.get('/games', (req, res) => {
     }).catch(error =>console.log(error))
 })
 
-app.get('/genre', (req, res) => {
+app.get('/genre', (res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     axios.get(`https://api.rawg.io/api/genres?key=${process.env.MY_API_KEY}&count=1`,
@@ -123,8 +123,8 @@ app.get('/genre', (req, res) => {
     }).catch(error =>console.log(error))
 })
 
-const server_port = process.env.SERVER_PORT || 8000;
+
 
 app.listen(process.env.SERVER_PORT, () => {
-console.log(`Listening to ${server_port}!`)
-} )
+console.log(`Listening to ${process.env.SERVER_PORT}!`)
+}).setTimeout(60000)

@@ -1,10 +1,21 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const fs = require('fs');
+const https = require('https');
 require('dotenv').config();
 
 const app = express();
 app.use(cors());
+const server = https
+  .createServer(
+    {
+      key: fs.readFileSync("./certificate/server.key"),
+      cert: fs.readFileSync("./certificate/server.cert"),
+    },
+    app
+  )
+
 
 app.get('/', (req, res) => {
     res.send('I\'m here!')
@@ -124,7 +135,10 @@ app.get('/genre', (req, res) => {
 })
 
 
+server.listen(process.env.SERVER_PORT, () => {
+    console.log(`Listening to ${process.env.SERVER_PORT}!`)
+})
 
-app.listen(process.env.SERVER_PORT, () => {
-console.log(`Listening to ${process.env.SERVER_PORT}!`)
-}).setTimeout(60000)
+// app.listen(process.env.SERVER_PORT, () => {
+// console.log(`Listening to ${process.env.SERVER_PORT}!`)
+// }).setTimeout(60000)

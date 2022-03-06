@@ -21,7 +21,7 @@ const GamePage = () => {
   console.log('game data incoming')
   console.log(location.state.id)
  
-    axios.get(`http://localhost:8000/games/${location.state.id}`,
+    axios.get(`https://localhost:8000/games/${location.state.id}`,
         {
         headers:{
             'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const GamePage = () => {
       }).catch(error =>console.log(error))
 
   console.log('incoming images')
-      axios.get(`http://localhost:8000/games/${location.state.id}/screenshots`,
+      axios.get(`https://localhost:8000/games/${location.state.id}/screenshots`,
       {
       headers:{
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const GamePage = () => {
 
   console.log('incoming movies')
 
-  axios.get(`http://localhost:8000/games/${location.state.id}/movies`,
+  axios.get(`https://localhost:8000/games/${location.state.id}/movies`,
   {
   headers:{
       'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const GamePage = () => {
   console.log(movies)
 }).catch(error =>console.log(error))
 console.log('incoming achievements')
-axios.get(`http://localhost:8000/games/${location.state.id}/achievements`,
+axios.get(`https://localhost:8000/games/${location.state.id}/achievements`,
 {
 headers:{
     'Content-Type': 'application/json',

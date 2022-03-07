@@ -2,19 +2,13 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const fs = require('fs');
-const https = require('https');
+const http = require('http');
 require('dotenv').config();
 
 const app = express();
 app.use(cors());
-const server = https
-  .createServer(
-    {
-      key: fs.readFileSync("./certificate/server.key"),
-      cert: fs.readFileSync("./certificate/server.cert"),
-    },
-    app
-  )
+const server = http
+  .createServer(app)
 
 
 app.get('/', (req, res) => {

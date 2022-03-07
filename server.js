@@ -7,8 +7,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors());
-const server = http
-  .createServer(app)
+const server = http.createServer(app)
 
 
 app.get('/', (req, res) => {

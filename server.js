@@ -1,15 +1,10 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-// const fs = require('fs');
-// const http = require('http');
 require('dotenv').config();
-
 const app = express();
 app.use(cors());
-// const server = http.createServer(app)
 
-// app.set('port',(process.env.SERVER_PORT || 8000))
 
 
 app.get('/', (req, res) => {
@@ -130,9 +125,6 @@ app.get('/genre', (req, res) => {
 })
 
 
-// server.listen(process.env.SERVER_PORT||8000, () => {
-//     console.log(`Listening to ${process.env.SERVER_PORT}!`)
-// })
 
 app.listen(process.env.SERVER_PORT||8000, '0.0.0.0', () => {
 console.log(`Listening to ${process.env.SERVER_PORT}!`)

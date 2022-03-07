@@ -129,7 +129,7 @@ app.get('/genre', (req, res) => {
 })
 
 
-server.listen(process.env.SERVER_PORT, () => {
+server.listen(process.env.SERVER_PORT||8000, () => {
     console.log(`Listening to ${process.env.SERVER_PORT}!`)
 })
 

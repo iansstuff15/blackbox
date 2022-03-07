@@ -134,6 +134,6 @@ app.get('/genre', (req, res) => {
 //     console.log(`Listening to ${process.env.SERVER_PORT}!`)
 // })
 
-app.listen(process.env.SERVER_PORT||8000, () => {
+app.listen(process.env.SERVER_PORT||8000, '0.0.0.0', () => {
 console.log(`Listening to ${process.env.SERVER_PORT}!`)
 }).setTimeout(30000)

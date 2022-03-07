@@ -11,7 +11,7 @@ const GenrePage = () => {
 
         console.log('game data incoming')
 
-        axios.get(`http://localhost:8000/games/genre/${location.state}`,
+        axios.get(`https://localhost:8000/games/genre/${location.state}`,
         {
         headers:{
             'Content-Type': 'application/json',

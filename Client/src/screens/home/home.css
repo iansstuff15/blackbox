@@ -1,8 +1,0 @@
-
-.genre-list{
-    display: flex; 
-    flex-direction: row;
-    overflow: scroll;
- /* overflow-X: hidden; */
-    overflow-y: hidden;
-}

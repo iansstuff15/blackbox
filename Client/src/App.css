@@ -1,0 +1,51 @@
+*{
+
+ 
+  font-weight: bold;
+  font-family: 'Teko', sans-serif;
+  margin: 0;
+}
+html{
+   scroll-behavior: smooth;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.website-title{
+  color: black;
+
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f0f0f0; 
+  padding: 10px;
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(191, 191, 191); 
+  border-radius: 10px;
+  
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3794eb; 
+  border-radius: 10px;
+
+}
+.App{
+  
+  background-color: white;
+  padding:  3vh 5vw 20vh 5vw ;
+}

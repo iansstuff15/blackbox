@@ -1,0 +1,25 @@
+.input{
+    padding: 10px;
+    margin: 10px;
+    min-width: 30vw;
+    border-radius: 7px;
+    border: none;
+    background-color:#a7a7a7;
+}
+label{
+    font-size: 1.5em;
+}
+input::placeholder{
+    text-align: center;
+}
+input{
+    color: white;
+}
+.no-label-input{
+    padding: 10px;
+    margin: 0;
+    min-width: 30vw;
+    border-radius: 7px;
+    border: none;
+    background-color:#a7a7a7; 
+}

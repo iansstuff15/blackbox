@@ -8,12 +8,13 @@
 }
 label{
     font-size: 1.5em;
+    color: black;
 }
 input::placeholder{
     text-align: center;
 }
 input{
-    color: white;
+    color: black;
 }
 .no-label-input{
     padding: 10px;

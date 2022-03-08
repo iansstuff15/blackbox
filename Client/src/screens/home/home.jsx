@@ -48,7 +48,7 @@ class Home extends Component {
     componentDidMount(){    
         this.fetchUpcoming();
         // if(this.state.authenticated)
-            
+        
         // else{
         //     return(<>{this.state.authenticaiton && <Navigate to="/login" replace ={true}/>}</>)
         // }
@@ -63,13 +63,25 @@ class Home extends Component {
             <Hero/>         
             
                <h2>Featured</h2>
-               <h3>Games</h3>
-               { this.state.games.map((game) => (
-                   <span key = {game.id}>
-                <GameCard gameName={game.name} gameIMG={game.background_image} gameReleased={game.released} gameData={game} />           
-                    </span>
-               
-            ))}
+              
+            {this.state.games != null?
+            <>
+             <h3>Games</h3>
+           { this.state.games.map((game) => (
+                <span key = {game.id}>
+             <GameCard gameName={game.name} gameIMG={game.background_image} gameReleased={game.released} gameData={game} />           
+                 </span>
+            
+         ))}
+         </>
+            :
+            <div>
+            <h3>Loading Please wait</h3>
+            </div>
+ 
+            
+            }
+              
                <h2>Genres</h2>
                 <div className='genre-list'>
                 { this.state.genres.map((genre) => (

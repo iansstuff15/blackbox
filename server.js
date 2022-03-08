@@ -115,6 +115,7 @@ app.get('/games', (req, res) => {
     ).then(response => {
         //the game library appears here and assign codes using res.data.result
         res.json(response.data.results)
+        console.log(response.data.results)
     }).catch(error =>console.log(error))
 })
 
@@ -130,6 +131,7 @@ app.get('/genre', (req, res) => {
     ).then(response => {
         //the game library appears here and assign codes using res.data.result
         res.json(response.data.results)
+        console.log(response.data.results)
     }).catch(error =>console.log(error))
 })
 

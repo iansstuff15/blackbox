@@ -28,6 +28,7 @@ class Home extends Component {
                     }
                 ).then(res => {
                     //the game library appears here and assign codes using res.data.result
+                    console.log(res.data)
                     this.setState({games:res.data})
                 }).catch(error =>console.log(error))
 
@@ -39,6 +40,7 @@ class Home extends Component {
                         }
                     ).then(res => {
                         //the game library appears here and assign codes using res.data.result
+                        console.log(res.data)
                         this.setState({genres:res.data})
                     }).catch(error =>
                             console.log(error)) 

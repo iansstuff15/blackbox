@@ -27,8 +27,6 @@ class Login extends React.Component{
       handleChange = async(event) => {
     
         await this.setState({ [event.target.name]: event.target.value });
-            console.log(event.target.name+' '+event.target.value + ' state: '+this.state[event.target.name])
-          
           };
 
   
@@ -74,10 +72,9 @@ render(){return(
         <form  onSubmit={this.handleSubmit}>
         <h2>LOGIN</h2>
         <h3>PAGE</h3>
-
         <div className='container'>
-        <InputComponent onChange={this.handleChange} label={'email'} placeholder={'i.e. JonnJonzz@email.com'} name={'email'} type={'email'} id={'email'}/>
-        <InputComponent onChange={this.handleChange} label={'password'} placeholder={'Jonn#191281'} name={'password'} type={'password'} id={'password'}/>
+        <InputComponent onChange={this.handleChange} label={'email'} placeholder={'i.e. JonnJonzz@email.com'} name={'email'} type={'email'} id={'email'} value = {this.state.email}/>
+        <InputComponent onChange={this.handleChange} label={'password'} placeholder={'Jonn#191281'} name={'password'} type={'password'} id={'password'} value = {this.state.password}/>
      
         </div>
        

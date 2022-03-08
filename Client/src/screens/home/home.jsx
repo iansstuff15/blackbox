@@ -19,7 +19,7 @@ class Home extends Component {
       
       fetchUpcoming() {
 
-                axios.get(`http://localhost:8000/games`,
+                axios.get(`/games`,
                     {
                     headers:{
                         'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ class Home extends Component {
                     this.setState({games:res.data})
                 }).catch(error =>console.log(error))
 
-                axios.get(`http://localhost:8000/genre`,
+                axios.get(`/genre`,
                         {
                         headers:{
                             'Content-Type': 'application/json',

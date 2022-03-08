@@ -136,7 +136,7 @@ app.get('/genre', (req, res) => {
 
 
 
-app.listen(8000, () => {
+app.listen(process.env.PORT||8000, () => {
 console.log(`Listening to ${process.env.PORT}!`)
 })
 

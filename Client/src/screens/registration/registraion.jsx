@@ -10,7 +10,6 @@ import { handleFirebaseSet } from '../../helper/firebase_set';
 import { handeEncryption } from '../../helper/crytography_helper';
 import store from '../../redux/store';
 import { UserActionTypes } from '../../redux/user/user-type';
-
 class Registration extends React.Component{
 
  
@@ -122,24 +121,24 @@ class Registration extends React.Component{
     }
  
     try {
-      console.log(email+ 'in try catch')
-      console.log(password+ 'in try catch')
-      console.log(store.getState()+'store')
-      console.log('contact number' + this.state.contact_number )
+      // console.log(email+ 'in try catch')
+      // console.log(password+ 'in try catch')
+      // console.log(store.getState()+'store')
+      // console.log('contact number' + this.state.contact_number )
       const { user } = await auth.createUserWithEmailAndPassword(
        
         email,
         password
       );
-     console.log(auth.CurrentUser)
-     console.log(user)
-     console.log(store.getState()+'store')
+    //  console.log(auth.getCurrentUser)
+    //  console.log(user)
+    //  console.log(store.getState()+'store')
     
       store.dispatch({
                 type: UserActionTypes.SET_CURRENT_USER,
                 payload:user
               })
-    console.log(store+'store')
+    // console.log(store+'store')
      const userData = {
        'first_name': handeEncryption(this.state.firstName, 'encryption key 123') ,
        'last_name': handeEncryption( this.state.lastName, 'encryption key 123'),
@@ -148,8 +147,8 @@ class Registration extends React.Component{
        'contact_number': handeEncryption(this.state.contact_number, 'encryption key 123') 
      }
      handleFirebaseSet(`users/${user.uid}`,userData)
-     this.setState({isLogin: true});
-     alert('register success')
+     alert('Register success');
+     this.setState({isLogin:true});
     } catch (error) {
       console.error(error);
     }
@@ -170,7 +169,7 @@ render(){return(
 
 
     <div className='grid'>
-      {this.state.isLogin && <Navigate to = '/login' replace = {true}/>}
+      {this.state.isLogin && <Navigate to="/login" replace = {true}/>}
         <div>
   
       

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link, } from 'react-router-dom'
 import {useNavigate} from 'react-router-dom'
 import './game_card.css'
 
@@ -15,11 +14,11 @@ const GameCard = ({gameName,gameIMG,gameReleased, gameGenre, gameData}) =>{
         backgroundAttachment: 'fixed',
         backgroundBlendMode:'lighten',
         backgroundSize:'100%'
+        
            }}
     >
         <div>
         <img src={gameIMG} alt={gameName + ' name'}  className='thumbnail'/>
-        {console.log(gameData)}
         <div >
        
         </div>

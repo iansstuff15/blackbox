@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation} from 'react-router-dom'
 import './game_page.css'
 import axios from 'axios';
-import { Carousel } from 'react-carousel-minimal';
 import AchievementTile from '../../components/achievement_tile/achievement_tile';
 import GenreTile from '../../components/genre-tile/genre-tile';
 import {FiExternalLink} from 'react-icons/fi'
-import {GrInstallOption} from'react-icons/gr'
 import { handleFirebaseSet } from '../../helper/firebase_set';
 import store from '../../redux/store';
 const GamePage = () => {
 
- const location = useLocation()
- const [gameData, setGameData] = useState([])
- const [images, setImages] = useState([])
+  const location = useLocation()
+  const [gameData, setGameData] = useState([])
+  const [images, setImages] = useState([])
   const [movies, setMovies] = useState([])
   const [achievements, setAchievements] = useState([])
   const [genre,setGenre] = useState([])
 
  useEffect(() => {
   // Update the document title using the browser API
+  // console.log('game data incoming')
+  // console.log(location.state.id)
  
-  console.log('game data incoming')
-  console.log(location.state.id)
- 
-    axios.get(`https://secret-depths-46783.herokuapp.com/games/${location.state.id}`||`http://localhost:8000/games/${location.state.id}`,
+    axios.get(`https://secret-depths-46783.herokuapp.com/games/${location.state.id}` ||`http://localhost:8000/games/${location.state.id}`,
         {
         headers:{
             'Content-Type': 'application/json',
@@ -35,12 +32,12 @@ const GamePage = () => {
         //the game library appears here and assign codes using res.data.result
         setGameData(res.data)
         setGenre(res.data.genres)
-        console.log(gameData)
-        console.log(genre)
+        // console.log(gameData)
+        // console.log(genre)
       }).catch(error =>console.log(error))
 
   console.log('incoming images')
-      axios.get(`https://secret-depths-46783.herokuapp.com/games/${location.state.id}/screenshots`||`http://localhost:8000/games/${location.state.id}/screenshots`,
+      axios.get(`https://secret-depths-46783.herokuapp.com/games/${location.state.id}/screenshots` ||`http://localhost:8000/games/${location.state.id}/screenshots`,
       {
       headers:{
           'Content-Type': 'application/json',
@@ -50,14 +47,14 @@ const GamePage = () => {
   ).then(res => {
       //the game library appears here and assign codes using res.data.result
       setImages(res.data)
-      console.log(images)
+      // console.log(res.data)
     }).catch(error =>console.log(error))
 
 
 
   console.log('incoming movies')
 
-  axios.get(`https://secret-depths-46783.herokuapp.com/games/${location.state.id}/movies`||`http://localhost:8000/games/${location.state.id}/movies`,
+  axios.get(`https://secret-depths-46783.herokuapp.com/games/${location.state.id}/movies` ||`http://localhost:8000/games/${location.state.id}/movies`,
   {
   headers:{
       'Content-Type': 'application/json',
@@ -67,10 +64,10 @@ const GamePage = () => {
 ).then(res => {
   //the game library appears here and assign codes using res.data.result
   setMovies(res.data)
-  console.log(movies)
+  // console.log(movies)
 }).catch(error =>console.log(error))
 console.log('incoming achievements')
-axios.get(`https://secret-depths-46783.herokuapp.com/games/${location.state.id}/achievements`||`http://localhost:8000/games/${location.state.id}/achievements`,
+axios.get(`https://secret-depths-46783.herokuapp.com/games/${location.state.id}/achievements` ||`http://localhost:8000/games/${location.state.id}/achievements`,
 {
 headers:{
     'Content-Type': 'application/json',
@@ -80,13 +77,10 @@ headers:{
 ).then(res => {
 //the game library appears here and assign codes using res.data.result
 setAchievements(res.data)
-console.log(achievements)
+// console.log(achievements)
 }).catch(error =>console.log(error))
 
-
-
-
-},[]);
+},[location.state.id]);
 
 const handleAddLibrary=(gameName, gameId)=>{
   console.log(store.getState().currentUser.uid+' uid')
@@ -135,7 +129,7 @@ const handleAddLibrary=(gameName, gameId)=>{
       <h6 className='game-esrb_rating'>
       ESRB rating | {gameData.esrb_rating!=null?gameData.esrb_rating.name: null}
       </h6>
-      <a href={gameData.metacritic_url} target="_blank" className='game-metacritic'>
+      <a href={gameData.metacritic_url} target="_blank" rel = "noreferrer" className='game-metacritic'>
       <h6 >
        Metacritic score | {gameData.metacritic}
        <FiExternalLink className='link-icon'/>
@@ -159,21 +153,22 @@ const handleAddLibrary=(gameName, gameId)=>{
            }}
       >
           <span className='reddit-name'> 
-          <img className='reddit-icon' src='https://external-preview.redd.it/iDdntscPf-nfWKqzHRGFmhVxZm4hZgaKe5oyFws-yzA.png?width=640&crop=smart&auto=webp&s=bfd318557bf2a5b3602367c9c4d9cd84d917ccd5'/>
+          <img className='reddit-icon' alt = "reddit-icon" src='https://external-preview.redd.it/iDdntscPf-nfWKqzHRGFmhVxZm4hZgaKe5oyFws-yzA.png?width=640&crop=smart&auto=webp&s=bfd318557bf2a5b3602367c9c4d9cd84d917ccd5'/>
           {gameData.reddit_name}
           </span>
           <p className='reddit-description'>
           {gameData.reddit_description}
           </p>
-          <a href={gameData.reddit_url} target="_blank" className='reddit-button'>Check it out<FiExternalLink className='link-icon'/></a>
-    
+          <a href={gameData.reddit_url} target="_blank" rel = "noreferrer" className='reddit-button'>Check it out<FiExternalLink className='link-icon'/></a>
       </div>
 
       <h2>Genres</h2>
    
        
       {genre != null? genre.map((genre)=>(
+          <span key = {genre.key}>
           <GenreTile genreName={genre.name} genreIMG={genre.image_background} genreCount={genre.games_count}/>
+          </span>
         )): null}
       <h2>Screenshots</h2>
 
@@ -184,7 +179,8 @@ const handleAddLibrary=(gameName, gameId)=>{
    
       {images.map((item, index)=>
     (
-           <img src={item.image} alt='game-screenshot' className='game-screenshot'/>
+
+           <img key = {item.id} src={item.image} alt='game-screenshot1' className='game-screenshot'/>
          
      )
      
@@ -198,9 +194,11 @@ const handleAddLibrary=(gameName, gameId)=>{
        
        {movies.map((item, index)=>
      (
-            <video width={'100%'} autoPlay loop className='game-movies' muted>
+          
+            <video key = {item.id} width={'100%'} autoPlay loop className='game-movies' muted>
                <source src={item.data.max} type="video/mp4"/>
-              </video>
+              </video>         
+
           
       )
       
@@ -216,8 +214,9 @@ const handleAddLibrary=(gameName, gameId)=>{
       <h2>Achievements</h2>
       {achievements.map((item, index)=>
     (
-           
-        <AchievementTile name={item.name} image={item.image}/>
+           <span key = {item.id}>
+              <AchievementTile name={item.name} image={item.image}/>
+           </span>
      )
      
       )}

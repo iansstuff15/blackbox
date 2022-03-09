@@ -5,22 +5,20 @@ import GenreTile from '../../components/genre-tile/genre-tile'
 import Hero from '../../components/Hero/Hero'
 import './home.css'
 import axios from 'axios';
-import {Navigate} from 'react-router-dom';
-// import {database} from '../../firebase/firebase';
+
 class Home extends Component {
     
 
     state = {
         games: [],
         genres:[],
-        libraryL:[],
         authenticated: false,
       }
 
       
       fetchUpcoming() {
 
-                axios.get(`https://secret-depths-46783.herokuapp.com/games` ||`http://localhost:8000/games`,
+                axios.get(`https://secret-depths-46783.herokuapp.com/games` || `http://localhost:8000/games`,
                     {
                     headers:{
                         'Content-Type': 'application/json',
@@ -32,7 +30,7 @@ class Home extends Component {
                     this.setState({games:res.data})
                 }).catch(error =>console.log(error))
 
-                axios.get(`https://secret-depths-46783.herokuapp.com/genre` || `http://localhost:8000/genre`,
+                axios.get(`https://secret-depths-46783.herokuapp.com/genre`||`http://localhost:8000/genre`,
                         {
                         headers:{
                             'Content-Type': 'application/json',
@@ -48,25 +46,18 @@ class Home extends Component {
 
     componentDidMount(){    
         this.fetchUpcoming();
-        // const libraryRef = database;
-        // libraryRef.on('value',(snapshot)=> {
-        //     const library = snapshot.val();
-        //     const libraryList = []
-        //     for (let id in library){
-        //         if(id === "vYENHq0syIY1ssVjuK3v13bS3Nx2")libraryList.push(library[id])
-        //     }
-        //     console.log(libraryList)
-        //     this.setState({libraryL: libraryList})
-        // })
-
-
+        // if(this.state.authenticated)
+        
+        // else{
+        //     return(<>{this.state.authenticaiton && <Navigate to="/login" replace ={true}/>}</>)
+        // }
        
     }
 
     render(){
-        return(
-           
+        return(         
             <div className='home'>
+            {/* {this.state.authentication && <Navigate to="/login" replace ={true}/>} */}
             <Hero/>         
             
                <h2>Featured</h2>

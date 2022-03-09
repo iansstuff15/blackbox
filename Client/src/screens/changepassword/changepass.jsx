@@ -2,9 +2,8 @@ import React from 'react'
 import InputComponent from '../../components/input-component/input';
 import'./changepass.css'
 import sideimage from  '../../assets/images/login-illustration.png';
-
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { render } from '@testing-library/react';
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// import { render } from '@testing-library/react';
 
 
 

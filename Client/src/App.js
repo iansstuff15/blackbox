@@ -1,16 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import './screens/registration/registraion'
 import Registration from './screens/registration/registraion';
-import firebase from 'firebase/compat/app'
 import Login from './screens/login/login';
-import ChangePass from './screens/changepassword/changepass';
 import Home from './screens/home/home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/header/header';
 import GamePage from './screens/game-page/game_page';
 import GenrePage from './screens/genre-page/genre_page';
 import ProfilePage from './screens/profile-page/Profile_page';
+import Library from './screens/library/library';
 function App() {
  
   return (
@@ -22,6 +20,7 @@ function App() {
       <Route path="login" element={<Login/>} />
       <Route path="register" element={<Registration/>} />
       <Route path="profile" element={<ProfilePage/>} />
+      <Route path="library" element={<Library/>} />
       <Route path="game" element={<GamePage/>} >
       <Route path=":game_id" element={<GamePage />} />
 

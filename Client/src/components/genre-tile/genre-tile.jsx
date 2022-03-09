@@ -1,6 +1,5 @@
 import React from 'react'
 import './genre-tile.css'
-import actionIcon from '../../assets/images/action-icon.png'
 import {useNavigate} from 'react-router-dom'
 const GenreTile = ({genreName, genreIMG, gamesCount}) => {
     let navigate = useNavigate();

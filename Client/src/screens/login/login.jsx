@@ -5,16 +5,17 @@ import sideimage from  '../../assets/images/login-illustration.png';
 // import { getAuth} from "firebase/auth";
 // import { render } from '@testing-library/react';
 import {Link } from 'react-router-dom';
-import {auth, gettingAuth} from '../../firebase/firebase';
+import {auth} from '../../firebase/firebase';
 import {Navigate} from 'react-router-dom'
-import {handeEncryption} from '../../helper/crytography_helper'
-import store from '../../redux/store';
-import { UserActionTypes } from '../../redux/user/user-type';
+// import {handeEncryption} from '../../helper/crytography_helper'
+// import store from '../../redux/store';
+// import { UserActionTypes } from '../../redux/user/user-type';
 class Login extends React.Component{
 
     constructor() {
         super();
-        this.state = {  
+        this.state = {
+       
           email: "",
           password: "",
           notRoute: false,
@@ -28,7 +29,7 @@ class Login extends React.Component{
       handleChange = async(event) => {
     
         await this.setState({ [event.target.name]: event.target.value });
-        // console.log(event.target.name+' '+event.target.value + ' state: '+this.state[event.target.name])
+            console.log(event.target.name+' '+event.target.value + ' state: '+this.state[event.target.name])
           
           };
 
@@ -45,16 +46,17 @@ class Login extends React.Component{
               //   type: UserActionTypes.SET_CURRENT_USER,
               //   payload:user
               // })
+              console.log(user)
               if(user){
-                this.setState({email: "", password: "" });
+                this.setState({ email: "", password: "" });
                 this.setState({notRoute: true});
               }
 
          
             } catch (error) {
-              console.log(error)
               this.setState((prevState)=>({loginAttempts: prevState.loginAttempts-1}));
               alert("Login Failed. Please try again.");
+
             }
             this.setState({ email: "", password: "" });
           }else{
@@ -71,6 +73,8 @@ class Login extends React.Component{
     
 render(){return(
 
+    
+
 
     <div className='grid'>
         <div>
@@ -80,8 +84,8 @@ render(){return(
         <h3>PAGE</h3>
 
         <div className='container'>
-        <InputComponent onChange={this.handleChange} label={'email'} placeholder={'i.e. JonnJonzz@email.com'} name={'email'} type={'email'} id={'email'} value = {this.state.email}/>
-        <InputComponent onChange={this.handleChange} label={'password'} placeholder={'Jonn#191281'} name={'password'} type={'password'} id={'password'} value = {this.state.password}/>
+        <InputComponent onChange={this.handleChange} label={'email'} placeholder={'i.e. JonnJonzz@email.com'} name={'email'} type={'email'} id={'email'}/>
+        <InputComponent onChange={this.handleChange} label={'password'} placeholder={'Jonn#191281'} name={'password'} type={'password'} id={'password'}/>
      
         </div>
        

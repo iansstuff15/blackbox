@@ -48,7 +48,7 @@ class Registration extends React.Component{
     // console.log(event.target.name+' '+event.target.value + ' state: '+this.state[event.target.name])
     
    if(event.target.name ==='password'){
-    console.log(event.target.value)
+    
     if(event.target.value.length >= 8){
       this.setState({isGreaterThan8: true})
       // console.log(this.state)
@@ -204,7 +204,7 @@ render(){return(
              <li>{this.state.isNumeric? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>}Contains numbers</li><br/>
              <li>{this.state.isNotContainFirstName? <AiFillCheckCircle className='icon'/>:<AiOutlineCheckCircle className='icon'/> } Must not contain first name</li><br/>
              <li>{this.state.isNotContainLastName? <AiFillCheckCircle className='icon'/>: <AiOutlineCheckCircle className='icon'/> } Must not contain last name</li><br/>
-             <li>{this.state.isGreaterThan8isGreaterThan8? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>}More than 8 characters long</li><br/>
+             <li>{this.state.isGreaterThan8? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>}More than 8 characters long</li><br/>
            </ul>
            </div>  
            :

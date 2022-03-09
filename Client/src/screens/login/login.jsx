@@ -107,6 +107,11 @@ render(){return(
           
           </h1>
           </Link>
+          <Link to='/changepassword'>
+          <h1 className='toSignInButton'>
+          Forget password? Click here!
+          </h1>
+          </Link>
          
         </div>
         </div>

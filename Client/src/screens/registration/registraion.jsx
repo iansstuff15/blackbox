@@ -70,7 +70,7 @@ class Registration extends React.Component{
       this.setState({isNotContainLastName: false})
       // console.log(this.state)
     }
-    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const specialChars = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
 
     if(specialChars.test(event.target.value)){
       this.setState({isContainSymbol: true})
@@ -209,7 +209,7 @@ render(){return(
            </div>  
            :
            null
-      }
+        }
        
         <InputComponent label={'confirm password'} placeholder={'confirm password must match initial password input'} name={'confirmPassword'} type={'password'} id={'confirm-password'} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$" onChange={this.handleChange} value={this.confirmPassword}  onFocus={this.handleFocusOnPassword}  onBlur={this.handleEscapePassword} />
           

@@ -25,7 +25,7 @@ export default function Library() {
         }
 
         useEffect(()=>{
-            handleGetSnapshotOfLibraryContent().then(data=> {
+            handleGetSnapshotOfLibraryContent('users', 'library').then(data=> {
             Object.keys(data['0']).map((gameName)=>{
                 var name = JSON.stringify(gameName)
                 var newname = name.substring(1, name.length-1)

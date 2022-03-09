@@ -50,23 +50,17 @@ class Home extends Component {
     componentDidMount(){    
         this.fetchUpcoming();
         const libraryRef = database;
-        libraryRef.on('value',(snapshot)=> {
-            const library = snapshot.val();
-            const libraryList = []
-            for (let id in library){
-                if(id === "vYENHq0syIY1ssVjuK3v13bS3Nx2")libraryList.push(library[id])
-            }
-            console.log(libraryList)
-            this.setState({libraryL: libraryList})
-        })
+        // libraryRef.on('value',(snapshot)=> {
+        //     const library = snapshot.val();
+        //     const libraryList = []
+        //     for (let id in library){
+        //         if(id === "vYENHq0syIY1ssVjuK3v13bS3Nx2")libraryList.push(library[id])
+        //     }
+        //     console.log(libraryList)
+        //     this.setState({libraryL: libraryList})
+        // })
 
-        
 
-        // if(this.state.authenticated)
-        
-        // else{
-        //     return(<>{this.state.authenticaiton && <Navigate to="/login" replace ={true}/>}</>)
-        // }
        
     }
 
@@ -74,7 +68,6 @@ class Home extends Component {
         return(
            
             <div className='home'>
-            {/* {this.state.authentication && <Navigate to="/login" replace ={true}/>} */}
             <Hero/>         
             
                <h2>Featured</h2>

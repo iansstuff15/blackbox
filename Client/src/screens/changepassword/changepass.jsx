@@ -18,6 +18,8 @@ class ChangePass extends React.Component{
           confirmPassword: "",
           showPasswordRequirements: false,
           passwordChecksPassed: 0,
+          isNotContainFirstName: true,
+          isNotContainLastName: true,
           isUpper: false,
           isLower: false,
           isGreaterThan8: false,
@@ -47,6 +49,13 @@ class ChangePass extends React.Component{
           this.setState({isGreaterThan8: false})
         }
        
+        if(!S(event.target.value.toUpperCase()).contains(this.state.dataInfo['first_name'].toUpperCase())){
+          this.setState({isNotContainFirstName: true})
+          // console.log(this.state)
+        }else if(S(event.target.value.toUpperCase()).contains(this.state.dataInfo['last_name'].toUpperCase())){
+          this.setState({isNotContainFirstName: false})
+          // console.log(this.state)
+        }
         const specialChars = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
     
         if(specialChars.test(event.target.value)){
@@ -112,10 +121,12 @@ render(){return(
         <InputComponent onChange={this.handleChange} onBlur={this.handleEscapePassword} label={'password'} placeholder={'Jonn#191281'} onFocus={this.handleFocusOnPassword}  name={'password'} type={'password'} id={'password'} value={this.password}/>
         {this.state.showPasswordRequirements? 
            <div>
-           <progress value={this.state.passwordChecksPassed} max="5"> 42% </progress>
+           <progress value={this.state.passwordChecksPassed} max="7"> 42% </progress>
            <ul>
              <li> {this.state.isUpper? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Contains capital letters</li><br/>
              <li>{this.state.isLower? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Contains non-capital letters</li><br/>
+             <li>{this.state.isNotContainFirstName? <AiFillCheckCircle className='icon'/>:<AiOutlineCheckCircle className='icon'/> } Must not contain first name</li><br/>
+             <li>{this.state.isNotContainLastName? <AiFillCheckCircle className='icon'/>: <AiOutlineCheckCircle className='icon'/> } Must not contain last name</li><br/>
              <li>{this.state.isContainSymbol? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Contains symbols</li><br/>
              <li>{this.state.isNumeric? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>}Contains numbers</li><br/>
              <li>{this.state.isGreaterThan8? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>}More than 8 characters long</li><br/>

@@ -33,7 +33,6 @@ class Registration extends React.Component{
       isNotContainLastName: true,
       isGreaterThan8: false,
       isContainSymbol: false,
-      isContainsFromDictionary:true,
       isNumeric: false,
       isLogin: false,
     }
@@ -51,8 +50,10 @@ class Registration extends React.Component{
    if(event.target.name ==='password'){
     console.log(event.target.value)
     if(event.target.value.length === 8){
-      this.setState({isGreaterThan8isGreaterThan8: true})
+      this.setState({isGreaterThan8: true})
       // console.log(this.state)
+    }else if(event.target.value.length < 8){
+      this.setState({isGreaterThan8: false})
     }
     if(!S(event.target.value.toUpperCase()).contains(this.state.firstName.toUpperCase())){
       this.setState({isNotContainFirstName: true})
@@ -195,7 +196,7 @@ render(){return(
        
         {this.state.showPasswordRequirements? 
            <div>
-           <progress value={this.state.passwordChecksPassed} max="8"> 32% </progress>
+           <progress value={this.state.passwordChecksPassed} max="7"> 32% </progress>
            <ul>
              <li> {this.state.isUpper? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Contains capital letters</li><br/>
              <li>{this.state.isLower? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Contains non-capital letters</li><br/>
@@ -204,7 +205,6 @@ render(){return(
              <li>{this.state.isNotContainFirstName? <AiFillCheckCircle className='icon'/>:<AiOutlineCheckCircle className='icon'/> } Must not contain first name</li><br/>
              <li>{this.state.isNotContainLastName? <AiFillCheckCircle className='icon'/>: <AiOutlineCheckCircle className='icon'/> } Must not contain last name</li><br/>
              <li>{this.state.isGreaterThan8isGreaterThan8? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>}More than 8 characters long</li><br/>
-             <li>{this.state.isContainsFromDictionary? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Doest not contain a word from dictionary</li><br/>
            </ul>
            </div>  
            :

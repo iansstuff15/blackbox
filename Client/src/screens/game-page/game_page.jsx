@@ -166,7 +166,7 @@ const handleAddLibrary=(gameName, gameId)=>{
    
        
       {genre != null? genre.map((genre)=>(
-          <span key = {genre.key}>
+          <span key = {genre.id}>
           <GenreTile genreName={genre.name} genreIMG={genre.image_background} genreCount={genre.games_count}/>
           </span>
         )): null}

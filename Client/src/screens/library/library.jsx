@@ -1,36 +1,54 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { handleGetSnapshotOfLibraryContent } from '../../helper/firebase_get'
-import './library.css'
+import './library.css';
+import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
+// import firebase from '../../firebase/firebase';
+export default function Library() {
+        let navigate = useNavigate()
+        const[Library,setLibrary] = useState();
+        useEffect(()=>{
+            handleGetSnapshotOfLibraryContent().then(data=>setLibrary(data['0']))
 
-class Library extends React.Component{
+            // firebase.database().ref('users').on('value', (snapshot)=> {
+            //     const library = snapshot.val();
+            //     const getDatabase = [];   
+            //     for (let id in library){
+            //         // if(id === "vYENHq0syIY1ssVjuK3v13bS3Nx2")
+            //         getDatabase.push(library[id])
+            //     }
+            //     setlibrary(getDatabase)
+            //     console.log(getDatabase)
+            // })
+           
+        },[]);
 
-    state = {
-        Library: [],
-        libraryState: false
-     
-      }
+        const fetchUpcoming =  (gameid) =>{
+            return axios.get(`https://blackbox-heroku.herokuapp.com/games/${gameid}` || `http://localhost:8000/games/${gameid}`,
+                    {
+                    headers:{
+                        'Content-Type': 'application/json',
+                        
+                    } 
+                    }
+                ).then(res => {
+                    //the game library appears here and assign codes using res.data.result
+                    navigate(`/game/${gameid}`, {state:res.data})
+                }).catch(error =>console.log(error))
+        }
 
 
-    componentDidMount(){
-        const game_library = handleGetSnapshotOfLibraryContent();
-        console.log(game_library)
-        this.setState({Library: game_library})
-        this.state.Library!==null?this.setState({libraryState:true}):this.setState({libraryState:false});
-        // console.log('library state' + this.state.Library)
-    }
-
-    render(){
         return(
             <div>
-
-                {/* {this.state.Library!==null? 
-                    this.state.Library.map((entry)=>{
-                        console.log(entry)
-                        return(<p>appearing</p>)
-                    }) : <p>Loading</p>} */}
+                
+                {Library?Object.keys(Library).map((gameName)=>{
+                    var name = JSON.stringify(gameName)
+                    var newname = name.substring(1, name.length-1)
+                    const gameid = Library[newname]['data']['gameId']
+                    
+                    return (<h1 key = {name} onClick = {()=>{fetchUpcoming(gameid)}}>{newname}</h1>)
+                }) : <p>Loading</p>}
             </div>
         )
-    }
+    
 }
-
-export default Library

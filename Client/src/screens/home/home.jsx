@@ -46,18 +46,13 @@ class Home extends Component {
 
     componentDidMount(){    
         this.fetchUpcoming();
-        // if(this.state.authenticated)
-        
-        // else{
-        //     return(<>{this.state.authenticaiton && <Navigate to="/login" replace ={true}/>}</>)
-        // }
        
     }
 
     render(){
         return(         
             <div className='home'>
-            {/* {this.state.authentication && <Navigate to="/login" replace ={true}/>} */}
+
             <Hero/>         
             
                <h2>Featured</h2>

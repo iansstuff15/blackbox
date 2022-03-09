@@ -35,6 +35,7 @@ class Registration extends React.Component{
       isContainSymbol: false,
       isContainsFromDictionary:true,
       isNumeric: false,
+      isLogin: false,
     }
   }
 
@@ -129,7 +130,7 @@ class Registration extends React.Component{
         email,
         password
       );
-      console.log(auth.getCurrentUser)
+     console.log(auth.getCurrentUser)
      console.log(user)
      console.log(store.getState()+'store')
     
@@ -146,7 +147,8 @@ class Registration extends React.Component{
        'contact_number': handeEncryption(this.state.contact_number, 'encryption key 123') 
      }
      handleFirebaseSet(`users/${user.uid}`,userData)
-   
+     this.setState({isLogin: true});
+     alert('register success')
     } catch (error) {
       console.error(error);
     }
@@ -167,6 +169,7 @@ render(){return(
 
 
     <div className='grid'>
+      {this.state.isLogin && <Navigate to = '/login' replace = {true}/>}
         <div>
   
       

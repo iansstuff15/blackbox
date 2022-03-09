@@ -85,7 +85,7 @@ render(){return(
 
         <div className='container'>
         <InputComponent onChange={this.handleChange} label={'email'} placeholder={'i.e. JonnJonzz@email.com'} name={'email'} type={'email'} id={'email'}/>
-        <InputComponent onChange={this.handleChange} label={'password'} placeholder={'Jonn#191281'} name={'password'} type={'password'} id={'password'}/>
+        <InputComponent disabled = {this.state.isDisabled} onChange={this.handleChange} label={'password'} placeholder={'Jonn#191281'} name={'password'} type={'password'} id={'password'}/>
      
         </div>
        

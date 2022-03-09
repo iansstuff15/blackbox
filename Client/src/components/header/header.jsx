@@ -47,7 +47,10 @@ class Header extends React.Component{
            
             <li>
               <VscLibrary className='icon'/>
-            My Library
+            <Link to = "/library">
+             My Library
+            </Link>
+           
               
             </li>
             <li>

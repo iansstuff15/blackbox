@@ -37,7 +37,6 @@ class ChangePass extends React.Component{
       }
 
       handleChange = async(event) => {
-
         await this.setState({ [event.target.name]: event.target.value });
         // console.log(event.target.name+' '+event.target.value + ' state: '+this.state[event.target.name])
        if(event.target.name ==='password'){
@@ -145,7 +144,7 @@ render(){return(
         </div>
         <div>
         
-        <div className='container-fixed'>
+        <div >
             
         <img src={sideimage} alt='register illustration' />
         <Link to = "/login">

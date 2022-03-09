@@ -14,8 +14,7 @@ class Login extends React.Component{
 
     constructor() {
         super();
-        this.state = {
-       
+        this.state = {  
           email: "",
           password: "",
           notRoute: false,
@@ -29,7 +28,7 @@ class Login extends React.Component{
       handleChange = async(event) => {
     
         await this.setState({ [event.target.name]: event.target.value });
-            console.log(event.target.name+' '+event.target.value + ' state: '+this.state[event.target.name])
+        // console.log(event.target.name+' '+event.target.value + ' state: '+this.state[event.target.name])
           
           };
 
@@ -39,7 +38,6 @@ class Login extends React.Component{
             if(this.state.loginAttempts > 0){
             const { email, password } = this.state;
             try {
-              console.log(user)
               await auth.signInWithEmailAndPassword(email, password);
               const user = auth.currentUser
               console.log(user)
@@ -47,17 +45,16 @@ class Login extends React.Component{
               //   type: UserActionTypes.SET_CURRENT_USER,
               //   payload:user
               // })
-              console.log(user)
               if(user){
-                this.setState({ email: "", password: "" });
+                this.setState({email: "", password: "" });
                 this.setState({notRoute: true});
               }
 
          
             } catch (error) {
+              console.log(error)
               this.setState((prevState)=>({loginAttempts: prevState.loginAttempts-1}));
               alert("Login Failed. Please try again.");
-
             }
             this.setState({ email: "", password: "" });
           }else{
@@ -67,14 +64,12 @@ class Login extends React.Component{
                     this.setState({isDisabled: false})
                     this.setState({loginAttempts: 3})
                 }, 30000);
-                alert("Too many failed attempts, try again after 5 minutes.");
+                alert("Too many failed attempts, try again after 30 seconds.");
           }
       };
         
     
 render(){return(
-
-    
 
 
     <div className='grid'>

@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 const path = require('path');
 
-// Serve static files from the React frontend app
+
 
 
 
@@ -23,7 +23,7 @@ app.get('/games/:game_id', (req, res) => {
     ).then(response => {
         //the game library appears here and assign codes using res.data.result
         res.json(response.data)
-        console.log( res.json(response.data))
+        // console.log( res.json(response.data))
     }).catch(error =>console.log(error))
 })
 
@@ -39,7 +39,7 @@ app.get('/games/:game_id/screenshots', (req, res) => {
     ).then(response => {
         //the game library appears here and assign codes using res.data.result
         res.json(response.data.results)
-        console.log( res.json(response.data))
+        // console.log( res.json(response.data))
     }).catch(error =>console.log(error))
 })
 
@@ -56,7 +56,7 @@ app.get('/games/:game_id/movies', (req, res) => {
     ).then(response => {
         //the game library appears here and assign codes using res.data.result
         res.json(response.data.results)
-        console.log( res.json(response.data))
+        // console.log( res.json(response.data))
     }).catch(error =>console.log(error))
 })
 
@@ -105,7 +105,7 @@ app.get('/games', (req, res) => {
     ).then(response => {
         //the game library appears here and assign codes using res.data.result
         res.json(response.data.results)
-        console.log(response.data.results)
+        // console.log(response.data.results)
     }).catch(error =>console.log(error))
 })
 
@@ -121,11 +121,11 @@ app.get('/genre', (req, res) => {
     ).then(response => {
         //the game library appears here and assign codes using res.data.result
         res.json(response.data.results)
-        console.log(response.data.results)
+        // console.log(response.data.results)
     }).catch(error =>console.log(error))
 })
 
-
+// Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, 'Client/build')))
 
 // Anything that doesn't match the above, send back index.html

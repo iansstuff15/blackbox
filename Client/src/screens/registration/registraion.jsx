@@ -10,6 +10,7 @@ import { handleFirebaseSet } from '../../helper/firebase_set';
 import { handeEncryption } from '../../helper/crytography_helper';
 import store from '../../redux/store';
 import { UserActionTypes } from '../../redux/user/user-type';
+
 class Registration extends React.Component{
 
  
@@ -114,7 +115,7 @@ class Registration extends React.Component{
     console.log(this.state.confirmPassword + ' in submit');
     console.log(this.state.password + ' in submit');
     console.log(this.state.displayName + ' in submit'); 
-    const { displayName, email, password, confirmPassword } = this.state;
+    const {email, password, confirmPassword } = this.state;
     if (password !== confirmPassword) {
       alert("password dont match");
       return;
@@ -130,7 +131,7 @@ class Registration extends React.Component{
         email,
         password
       );
-     console.log(auth.getCurrentUser)
+     console.log(auth.CurrentUser)
      console.log(user)
      console.log(store.getState()+'store')
     
@@ -217,7 +218,7 @@ render(){return(
            <div>
            <progress value={this.state.passwordChecksPassed} max="8"> 32% </progress>
            <ul>
-             <li> {this.state.password == this.state.confirmPassword? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Is the same with password</li><br/>
+             <li> {this.state.password === this.state.confirmPassword? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Is the same with password</li><br/>
           
            </ul>
            </div>  

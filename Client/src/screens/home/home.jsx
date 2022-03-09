@@ -6,8 +6,7 @@ import Hero from '../../components/Hero/Hero'
 import './home.css'
 import axios from 'axios';
 import {Navigate} from 'react-router-dom';
-import {database} from '../../firebase/firebase';
-
+// import {database} from '../../firebase/firebase';
 class Home extends Component {
     
 
@@ -49,7 +48,7 @@ class Home extends Component {
 
     componentDidMount(){    
         this.fetchUpcoming();
-        const libraryRef = database;
+        // const libraryRef = database;
         // libraryRef.on('value',(snapshot)=> {
         //     const library = snapshot.val();
         //     const libraryList = []

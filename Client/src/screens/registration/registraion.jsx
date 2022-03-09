@@ -49,7 +49,7 @@ class Registration extends React.Component{
     
    if(event.target.name ==='password'){
     console.log(event.target.value)
-    if(event.target.value.length === 8){
+    if(event.target.value.length >= 8){
       this.setState({isGreaterThan8: true})
       // console.log(this.state)
     }else if(event.target.value.length < 8){

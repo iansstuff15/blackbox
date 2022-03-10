@@ -152,6 +152,7 @@ class Registration extends React.Component{
      this.setState({isLogin:true});
     } catch (error) {
       console.error(error);
+      alert('Does not conform to the password policy');
     }
    
   }

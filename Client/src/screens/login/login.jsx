@@ -8,8 +8,8 @@ import {Link } from 'react-router-dom';
 import {auth} from '../../firebase/firebase';
 import {Navigate} from 'react-router-dom'
 // import {handeEncryption} from '../../helper/crytography_helper'
-// import store from '../../redux/store';
-// import { UserActionTypes } from '../../redux/user/user-type';
+import store from '../../redux/store';
+import { UserActionTypes } from '../../redux/user/user-type';
 class Login extends React.Component{
 
     constructor() {
@@ -42,11 +42,16 @@ class Login extends React.Component{
               await auth.signInWithEmailAndPassword(email, password);
               const user = auth.currentUser
               console.log(user)
-              // store.dispatch({
-              //   type: UserActionTypes.SET_CURRENT_USER,
-              //   payload:user
-              // })
+              store.dispatch({
+                type: UserActionTypes.SET_CURRENT_USER,
+                payload:user
+              })
               console.log(user)
+
+
+              
+
+
               if(user){
                 this.setState({ email: "", password: "" });
                 this.setState({notRoute: true});

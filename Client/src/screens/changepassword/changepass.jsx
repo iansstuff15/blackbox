@@ -6,7 +6,12 @@ import {AiFillCheckCircle, AiOutlineCheckCircle} from 'react-icons/ai'
 import S from 'string';
 import { handleGetSnapshotOfLibraryContent } from '../../helper/firebase_get'
 import {Link } from 'react-router-dom';
-
+import {auth} from '../../firebase/firebase';
+import {Navigate} from 'react-router-dom'
+// import {handeEncryption} from '../../helper/crytography_helper'
+import store from '../../redux/store';
+import { UserActionTypes } from '../../redux/user/user-type';
+import { getAuth, updatePassword } from "firebase/auth";
 class ChangePass extends React.Component{
 
     constructor() {
@@ -14,8 +19,8 @@ class ChangePass extends React.Component{
         this.state = {
           displayName: "",
           email: "",
-          password: "",
-          confirmPassword: "",
+          oldPassword: "",
+          newPassword: "",
           showPasswordRequirements: false,
           passwordChecksPassed: 0,
           isNotContainFirstName: true,
@@ -99,11 +104,52 @@ class ChangePass extends React.Component{
         this.setState({showPasswordRequirements: false})
       }
       
-      
-handleSubmit = () => {
-  //change password here via email
-}
+      handleSubmit = async (event) => {
+        event.preventDefault();
+        if(this.state.loginAttempts > 0){
+        const { email, oldPassword, newPassword } = this.state;
+        try {
+          await auth.signInWithEmailAndPassword(email, oldPassword);
+          const user = auth.currentUser
+          console.log(user)
+          store.dispatch({
+            type: UserActionTypes.SET_CURRENT_USER,
+            payload:user
+          })
 
+
+          updatePassword(user, newPassword).then(() => {
+            // Update successful.
+            console.log('password updated')
+          }).catch((error) => {
+            // An error ocurred
+            // ...
+            console.log('update failed')
+          });
+          console.log(user)
+          if(user){
+            this.setState({ email: "", password: "" });
+            this.setState({notRoute: true});
+          }
+
+     
+        } catch (error) {
+          this.setState((prevState)=>({loginAttempts: prevState.loginAttempts-1}));
+          alert("Login Failed. Please try again.");
+
+        }
+        this.setState({ email: "", password: "" });
+      }else{
+        this.setState({isDisabled: true});
+            // Lock Login Button for 5 minutes and add 3 again to loginAttempts variable
+            setTimeout(()=> {
+                this.setState({isDisabled: false})
+                this.setState({loginAttempts: 3})
+            }, 30000);
+            alert("Too many failed attempts, try again after 30 seconds.");
+      }
+  };
+    
 render(){return(
 
     
@@ -117,7 +163,24 @@ render(){return(
         <h3>PASSWORD</h3>
         <div className='container'>
         <InputComponent label={'email'} placeholder={'i.e. JonnJonzz@email.com'} name={'email'} type={'email'} id={'email'}/>
-        <InputComponent onChange={this.handleChange} onBlur={this.handleEscapePassword} label={'password'} placeholder={'Jonn#191281'} onFocus={this.handleFocusOnPassword}  name={'password'} type={'password'} id={'password'} value={this.password}/>
+        <InputComponent onChange={this.handleChange} onBlur={this.handleEscapePassword} label={'old password'} placeholder={'Jonn#191281'} onFocus={this.handleFocusOnPassword}  name={'oldPassword'} type={'password'} id={'oldPassword'} value={this.oldPassword}/>
+        {this.state.showPasswordRequirements? 
+           <div>
+           <progress value={this.state.passwordChecksPassed} max="7"> 42% </progress>
+           <ul>
+             <li> {this.state.isUpper? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Contains capital letters</li><br/>
+             <li>{this.state.isLower? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Contains non-capital letters</li><br/>
+             <li>{this.state.isNotContainFirstName? <AiFillCheckCircle className='icon'/>:<AiOutlineCheckCircle className='icon'/> } Must not contain first name</li><br/>
+             <li>{this.state.isNotContainLastName? <AiFillCheckCircle className='icon'/>: <AiOutlineCheckCircle className='icon'/> } Must not contain last name</li><br/>
+             <li>{this.state.isContainSymbol? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>} Contains symbols</li><br/>
+             <li>{this.state.isNumeric? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>}Contains numbers</li><br/>
+             <li>{this.state.isGreaterThan8? <AiFillCheckCircle className='icon'/> : <AiOutlineCheckCircle className='icon'/>}More than 8 characters long</li><br/>
+           </ul>
+           </div>  
+           :
+           null
+        }
+          <InputComponent onChange={this.handleChange} onBlur={this.handleEscapePassword} label={'new password'} placeholder={'Jonn#191281'} onFocus={this.handleFocusOnPassword}  name={'newPassword'} type={'password'} id={'newPassword'} value={this.newPassword}/>
         {this.state.showPasswordRequirements? 
            <div>
            <progress value={this.state.passwordChecksPassed} max="7"> 42% </progress>
